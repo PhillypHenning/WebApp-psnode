@@ -1,0 +1,14 @@
+{
+  "name": "webapp-psnode",
+  "version": "1.0.0",
+  "description": "A simple web application that is built along side a Pluralsight Node + Express course. ",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

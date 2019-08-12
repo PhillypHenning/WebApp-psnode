@@ -1,10 +1,11 @@
-var express = require('express');
-var chalk = require('chalk');
-var morgan = require('morgan');
-var debug = require('debug')('app');
-var path = require('path');
+const express = require('express');
+const chalk = require('chalk');
+const morgan = require('morgan');
+const debug = require('debug')('app');
+const path = require('path');
 
-var app = express();
+const app = express();
+const port = process.env.PORT || 3000
 
 // Middleware
 app.use(morgan('tiny'));
@@ -18,6 +19,7 @@ app.get('/', function(req, res){
     res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
-app.listen(3000, function (){
-    debug(`Listening port ${chalk.green('3000')}`);
+// Server
+    app.listen(port, function (){
+    debug(`Listening on port ${chalk.yellow(port)}`);
 });

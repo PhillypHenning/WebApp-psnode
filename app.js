@@ -3,6 +3,8 @@ const chalk = require('chalk');
 const morgan = require('morgan');
 const debug = require('debug')('app');
 const path = require('path');
+const sql = require('mssql');
+const conconfig = require('./conf/settings');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -10,11 +12,23 @@ const nav = [
     { link: '/books', title: 'Books' },
     { link: '/authors', title: 'Authors' }];
 
+const config = {
+    user: conconfig['user'],
+    password: conconfig['password'],
+    server: conconfig['server'],
+
+    options: {
+        encrypt: true,
+        database: conconfig['database']
+    }
+}
+
 // Defined routes
 const bookRouter = require('./src/routes/bookRoutes')(nav);
 
 
 // Middleware
+sql.connect(config).catch(err => debug(err));
 app.use(morgan('tiny'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')));

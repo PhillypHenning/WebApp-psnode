@@ -3,27 +3,16 @@ const chalk = require('chalk');
 const morgan = require('morgan');
 const debug = require('debug')('app');
 const path = require('path');
-const sql = require('mssql');
-const conconfig = require('./conf/settings');
 const bodyParser = require('body-parser');
+const passport = require('passport');
+const cookieParser = require('cookie-parser')
+const session = require('express-session');
 
 const app = express();
 const port = process.env.PORT || 3000;
 const nav = [
   { link: '/books', title: 'Books' },
   { link: '/authors', title: 'Authors' }];
-
-// mssql - Dead connection code. 
-/* const config = {
-  user: conconfig['user'],
-  password: conconfig['password'],
-  server: conconfig['server'],
-
-  options: {
-    encrypt: true,
-    database: conconfig['database']
-  }
-} */
 
 // Defined routes
 const bookRouter = require('./src/routes/bookRoutes')(nav);
@@ -35,6 +24,11 @@ const authRouter = require('./src/routes/authRoutes')();
 app.use(morgan('tiny'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(session({ secret: 'library'} ));
+require('./src/config/passport.js')(app);
+
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')));
 app.use('/js', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')));

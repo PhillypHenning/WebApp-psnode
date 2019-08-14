@@ -19,7 +19,7 @@
     <div class="navbar-header">
       <a href="/" class="navbar-brand">Home</a>
       <%for(let i=0; i<nav.length; i++) {%>
-      <a href="<%= book.link%>" class=navbar-brand><%= book.title%></a>
+      <a href="<%= nav[i].link%>" class=navbar-brand><%= nav[i].title%></a>
       <%}%> 
     </div>
     <nav class="collapse navbar-collapse" role="navigation">

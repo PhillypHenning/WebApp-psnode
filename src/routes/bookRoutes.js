@@ -35,7 +35,7 @@ function router(nav) {
 
     bookRouter.route('/')
        .get((req, res) => {
-        const request = new sql.Request();
+        /* const request = new sql.Request();
         request.query('SELECT * from Library.dbo.books')
             .then((result) => {
                 debug(result);
@@ -46,7 +46,13 @@ function router(nav) {
                         books
                     }
                 );
-            }).catch((err) => { debug(err)})
+            }).catch((err) => { debug(err)}) */
+            res.render('bookList', 
+            {
+                nav,
+                title: 'Library',
+                books
+            });
         });
 
     bookRouter.route('/:id')

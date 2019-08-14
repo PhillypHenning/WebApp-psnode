@@ -12,7 +12,8 @@ const nav = [
   { link: '/books', title: 'Books' },
   { link: '/authors', title: 'Authors' }];
 
-const config = {
+// mssql - Dead connection code. 
+/* const config = {
   user: conconfig['user'],
   password: conconfig['password'],
   server: conconfig['server'],
@@ -21,7 +22,7 @@ const config = {
     encrypt: true,
     database: conconfig['database']
   }
-}
+} */
 
 // Defined routes
 const bookRouter = require('./src/routes/bookRoutes')(nav);
@@ -29,7 +30,6 @@ const adminRouter = require('./src/routes/adminRoutes')(nav);
 
 
 // Middleware
-sql.connect(config).catch(err => debug(err));
 app.use(morgan('tiny'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')));

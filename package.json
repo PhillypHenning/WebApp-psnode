@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-win": "set DEBUG=app:* & nodemon app.js",
-    "start": "DEBUG=app:* nodemon app.js",
+    "start": "DEBUG=app,app:* nodemon app.js",
     "lint": "./node_modules/.bin/eslint app.js"
   },
   "author": "Phillyp Henning",

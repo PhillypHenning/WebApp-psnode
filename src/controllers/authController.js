@@ -51,8 +51,6 @@ function authController(nav) {
     });
   }
 
-
-
   return {
     authenticate,
     signUp,

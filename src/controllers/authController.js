@@ -1,8 +1,5 @@
 const debug = require('debug')('app:authController');
 const { MongoClient } = require('mongodb');
-const passport = require('passport');
-
-
 
 function authController(nav) {
   function authenticate(req, res, next) {

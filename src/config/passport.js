@@ -14,7 +14,6 @@ module.exports = function passportConfig(app) {
 
   // Retrieves a user from the sesssion 
   passport.deserializeUser((user, done) => {
-    debug(`User retrieved: ${user}`)
     done(null, user);
   });
 };

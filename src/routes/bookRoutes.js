@@ -4,7 +4,12 @@ const debug = require('debug')('app:bookRouter');
 const { MongoClient, ObjectId } = require('mongodb');
 
 function router(nav) {
+  bookRouter.use((req, res, next) => {
+    if(req.user){next()} else {res.redirect('/');}
+  })
+
   bookRouter.route('/')
+  
     .get((req, res) => {
       const url = 'mongodb://127.0.0.1:27017';
       const dbName = 'libraryApp';

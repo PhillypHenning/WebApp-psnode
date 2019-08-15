@@ -1,6 +1,6 @@
 {
-    "user" : "",
-    "password" : "",
-    "server" : "",
-    "database" : ""
+    
+    //goodReads API
+    "key" : "",
+    "secret" : "" 
 }

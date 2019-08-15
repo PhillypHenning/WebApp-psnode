@@ -17,7 +17,7 @@ const nav = [
 // Defined routes
 const bookRouter = require('./src/routes/bookRoutes')(nav);
 const adminRouter = require('./src/routes/adminRoutes')(nav);
-const authRouter = require('./src/routes/authRoutes')();
+const authRouter = require('./src/routes/authRoutes')(nav);
 
 
 // Middleware

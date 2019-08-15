@@ -47,7 +47,7 @@ function bookController(nav, bookService) {
         const col = await db.collection('books');
 
         const book = await col.findOne({ _id: new ObjectId(id) });
-        book.details = await bookService.getBookById(book.bookId);
+        book.details = await bookService.getBookById(book.title);
 
         res.render(
           'bookView',

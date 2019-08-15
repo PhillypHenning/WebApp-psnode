@@ -56,8 +56,11 @@ function router(nav) {
       if(req.user){next();}else{res.redirect('/');}
     })
     .get((req, res) => {
-      res.json(req.user);
-    })
+      res.render('profile', {
+        nav,
+        title: req.user.username
+      });
+    });
 
   return authRouter;
 };
